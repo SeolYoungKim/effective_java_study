@@ -115,7 +115,7 @@ void reflection() throws Exception {
 
 #### 싱글톤을 만드는 방법 2 : 정적 팩터리 메서드 + private 생성자
 
-```
+```java
 public class Lee {
     private static final Lee SINGLETON_LEE = new Lee();
 
@@ -148,7 +148,7 @@ void singleton() {
 -   정적 팩토리를 제네릭 싱글톤 팩토리로 만들 수 있습니다.
     -   아래와 같이 만들 경우, Set에 다양한 타입의 값들을 넣을 수 있게 됩니다.
 
-```
+```java
 // 정적 팩토리 예시
 public class GenericSingletonFactory {
 
@@ -262,7 +262,7 @@ public class SerializeSingletonOk implements Serializable {
 
 이를 확인한 테스트 코드입니다.
 
-```
+```java
 public class SerializeTest {
 
     @DisplayName("싱글톤이 유지되지 않는다")
@@ -324,7 +324,7 @@ public class SerializeTest {
 
 #### 싱글톤을 만드는 방법 3 : 원소가 하나인 Enum을 선언하라
 
-```
+```java
 public enum Park {
     INSTANCE;
 }
