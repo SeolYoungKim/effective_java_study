@@ -345,7 +345,7 @@ void enumTest() {
 }
 ```
 
-[##_Image|kage@eww9x0/btrPh9OwV10/5B1N2qx4dvUGYvUvb0ojwk/img.png|CDM|1.3|{"originWidth":518,"originHeight":147,"style":"alignCenter"}_##]
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Feww9x0%2FbtrPh9OwV10%2F5B1N2qx4dvUGYvUvb0ojwk%2Fimg.png)
 
 public 필드 방식과 비슷하지만 아래와 같은 장점이 있습니다.
 
