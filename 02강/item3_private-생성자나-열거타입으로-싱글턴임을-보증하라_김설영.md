@@ -9,9 +9,162 @@
 
 #### 문제점
 
-클래스를 싱글톤으로 만들면, 이를 사용하는 클라이언트를 테스트하기가 어려워질 수 있다고 합니다.
+#### 문제점
 
--   타입을 인터페이스로 정의하고, 그 인터페이스를 구현해서 만든 싱글톤이 아닐 경우, 가짜(mock) 객체 구현으로 대체할 수 없기 때문이라고 하는데, 솔직히 아직 무슨말인지 모르겠습니다... 차차 알아가보겠습니다.
+클래스를 싱글톤으로 만들면, 이를 사용하는 클라이언트를 테스트하기가 어려워질 수 있다고 합니다. 타입을 인터페이스로 정의하고, **그 인터페이스를 구현해서 만든 싱글톤이 아닐 경우**, 가짜(mock) 객체 구현으로 대체할 수 없기 때문이라고 합니다.
+
+대체 이게 대체 무슨 말일까요????????
+
+-   싱글톤 클래스 자체는 가짜 객체(Mock)를 만들 수 없다.
+-   인터페이스를 구현한 싱글톤 클래스는 가짜 객체(Mock)를 만들 수 있다.
+
+가짜 객체를 만들 수 없는 경우, 클라이언트 코드에 대한 단위 테스트 (독립적인 테스트)를 할 수 없다는 제약 사항이 생기게 됩니다. 
+
+또한, 싱글톤 객체를 각 테스트마다 매번 생성하는 것은 상당히 비효율적이고, operation cost가 많이 들 수도 있다고 합니다. 사실 Mock 객체도 생성해서 사용할텐데, 이러한 연산 비용의 차이가 발생한다는 내용이 잘 이해가 가지 않았습니다. 
+
+-   싱글톤 객체를 생성할 때는 "필요한 모든 필드가 들어가있는 상태인 객체"를 생성하고, Mock객체를 생성할 때는 싱글톤 객체보다 필드가 적어서 상대적으로 비용이 적게 든다. 라고 추측하고 있습니다
+
+**Mocking이 안되는 경우**
+
+```java
+// 싱글톤 판다 티모 클래스입니다.
+public class PandaTeemo {
+
+    public static PandaTeemo PANDA_TEEMO = new PandaTeemo();
+
+    private String pandaMoja;
+    private String daeNaMoo;
+    private String samgakMushroom;
+
+    private PandaTeemo() {
+    }
+
+    public void poisonShot() {
+        System.out.println("판다 티모가 독침을 쏩니다.");
+    }
+
+    public void sheared() {
+        System.out.println("판다 티모가 찢겼습니다.");
+    }
+}
+
+// Top 객체는 판다 티모를 직접적으로 참조하고 있습니다.
+public class Top {
+
+    private final PandaTeemo pandaTeemo;
+
+    public Top(PandaTeemo pandaTeemo) {
+        this.pandaTeemo = pandaTeemo;
+    }
+
+    public boolean init;
+    public boolean teemoIsDead;
+
+    public void fight() {
+        init = true;
+        pandaTeemo.poisonShot();
+        pandaTeemo.sheared();
+        teemoIsDead = true;
+    }
+}
+
+// 테스트를 할 때, Mock 객체를 만들 수 없습니다.
+// 판다 티모 싱글톤을 그대로 만들기 때문에, 
+// 껍데기만 만드는 Mock 객체를 사용할 때 보다 연산 비용이 비교적 많이 듭니다.
+@Test
+void fail() {
+    Top top = new Top(PandaTeemo.PANDA_TEEMO);  // 아무런 기능이 없는 Mock 객체를 만들어서 사용할 수 없습니다. 싱글톤 객체를 생성하여 사용해야 합니다.
+    top.fight();
+
+    // 심지어 해당 테스트는 독립적인 테스트가 아닙니다.
+    // Top 객체의 Test만을 원했지만, 싱글톤 객체인 판다 티모 객체가 관여하기 때문입니다.
+    assertThat(top.init).isTrue();
+    assertThat(top.teemoIsDead).isTrue();
+}
+```
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdTvrKS%2FbtrPt6iPIU0%2FbFtQPubwTGlGwXOld1g3Ok%2Fimg.png)
+
+**Interface를 구현한 싱글톤 객체를 만듦으로써 Mocking이 가능해지는 경우**
+
+```
+// 인터페이스 입니다.
+public interface Teemo {
+    void poisonShot();
+    void sheared();
+}
+
+// 인터페이스 구현체이며, 싱글톤 오메가 티모 클래스입니다.
+public class OmegaTeemo implements Teemo{
+
+    public static OmegaTeemo OMEGA_TEEMO = new OmegaTeemo();
+
+    private String omegaMoja;
+    private String gun;
+    private String bombMushroom;
+
+    private OmegaTeemo() {
+    }
+
+    @Override
+    public void poisonShot() {
+        System.out.println("오메가 티모가 독침을 쏩니다.");
+    }
+
+    @Override
+    public void sheared() {
+        System.out.println("오메가 티모가 찢겼습니다.");
+    }
+}
+
+// Top2 객체는 오메가 티모 구현체가 아닌, 티모 인터페이스를 참조하고 있습니다.
+public class Top2 {
+
+    private final Teemo teemo;
+
+    public Top2(Teemo teemo) {
+        this.teemo = teemo;
+    }
+
+    public boolean init;
+    public boolean teemoIsDead;
+
+    public void fight() {
+        init = true;
+        teemo.poisonShot();
+        teemo.sheared();
+        teemoIsDead = true;
+    }
+}
+
+// Test 디렉토리에 Teemo 인터페이스를 구현한 MockTeemo 객체를 만듭니다.
+public class MockTeemo implements Teemo {
+    @Override
+    public void poisonShot() {
+        System.out.println("오메가 티모가 독침을 쏩니다.");
+    }
+
+    @Override
+    public void sheared() {
+        System.out.println("오메가 티모가 찢겼습니다.");
+    }
+}
+
+// 오메가 티모가 가진 필드가 이용되지도 않고, 생성 되지도 않습니다.
+@Test
+void success() {
+    Top2 top2 = new Top2(new MockTeemo());  // 싱글톤 오메가 티모가 생성되지 않습니다. 그저 MockTeemo입니다.
+    top2.fight();
+
+    assertThat(top2.init).isTrue();
+    assertThat(top2.teemoIsDead).isTrue();
+}
+```
+
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGJwD0%2FbtrPp3gQjmA%2FcQQ4Z3br6j7EbkVYp3Wuk0%2Fimg.png)
+
+---
+
+
 
 #### 싱글톤을 만드는 방법 1 : public static final 필드 + private 생성자
 
