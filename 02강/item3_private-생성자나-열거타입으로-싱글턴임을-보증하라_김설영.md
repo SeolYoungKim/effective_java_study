@@ -86,7 +86,7 @@ void fail() {
 
 **Interface를 구현한 싱글톤 객체를 만듦으로써 Mocking이 가능해지는 경우**
 
-```
+```java
 // 인터페이스 입니다.
 public interface Teemo {
     void poisonShot();
@@ -211,7 +211,7 @@ void reflection() throws Exception {
                 try {
                     Kim reflectedKim = (Kim) constructor.newInstance();
                     System.out.println("reflectedKim = " + reflectedKim);
-                } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                } catch (InstantiationException | IllegalAccessException | UnsupportedOperationException | InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }
             });
@@ -231,7 +231,7 @@ public class Kim {
 
     private Kim() {
         if (SINGLETON_KIM != null) {
-            throw new IllegalAccessError("이미 생성되어 있는 객체입니다.");
+            throw new UnsupportedOperationException("이미 생성되어 있는 객체입니다.");
         }
     }
 }
