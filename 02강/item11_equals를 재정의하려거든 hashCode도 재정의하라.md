@@ -60,7 +60,7 @@ HashMap 이나 HashSet 같은 Collection 에서 Object 의 hashCode 메서드를
 
 <br/>
 
-이 코드는 HashMap의 조회 함수 입니다. 
+### 이 코드는 HashMap의 조회 함수 입니다. 
 
 ```java
 public V get(Object key) {
