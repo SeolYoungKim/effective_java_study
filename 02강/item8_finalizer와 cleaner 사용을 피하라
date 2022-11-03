@@ -1,0 +1,28 @@
+# finalizer와 cleaner 사용을 피하라
+자바는 두 가지 객체 소멸자를 제공
+finalizer는 예측할 수 없고, 상황에 따라 위험할 수 있다
+기본적으로 쓰지말아야 한다. 자바9 부터는 deprecated
+대안으로 cleaner가 생겼지만 이것도 쓰면 안됨
+
+try-with-resource와 try-finally를 사용하여 해결한다.
+
+finalizer와 cleaner로는 제때 실행되어야 하는 작업을 절대 할 수 없다.
+언제 실행될지는 GC 알고리즘에 달려있다.
+
+프로그램 생애주기와 상관없는, 상태를 영구적으로 수정하는 작업에서는 절대 finalizer나 cleaner에 의존하면 안됨
+ex) DB connection close같은것
+
+잡지 못한 예외로 인해 불완전한 객체가 남아있을 수 있으며 어떻게 동작할지 예측 불가능하다.
+finalizer에서 일어난 예외는 출력되지 않는다.
+
+성능이슈까지 있다.
+
+AutoCloseable을 구현하고 close 메소드를 호출하게 해야한다.
+예외가 터져도 제대로 종료되도록 try-with-resource 사용할 것
+
+finalizer와 cleaner는 안전망으로 사용한다.
+
+```java
+
+```
+
