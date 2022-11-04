@@ -88,7 +88,7 @@ class Scratch {
 메모리 사용량은 VisualVM으로 확인해 보았다.  
 아래는 메모리 누수가 일어나는 스택을 사용한 결과로 메모리를 **2,000MB**까지 잡아먹었다
 
-![메모리 누수 heap 그래프](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdaedyp%2FbtrPnglBlL8%2FbrBvcisVBKMnm6DGAckLNk%2Fimg.png)
+![메모리 누수 heap 그래프](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdaedyp%2FbtrPnglBlL8%2FbrBvcisVBKMnm6DGAckLNk%2Fimg.png?)
 
 참조를 null로 수정해준 스택을 사용하면 메모리를 **500MB**도 차지하지 않는다.
 
