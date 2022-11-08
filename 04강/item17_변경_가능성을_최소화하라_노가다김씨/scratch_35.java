@@ -39,7 +39,7 @@ class Scratch {
 //      ..대충 많은 추가 연산들
       System.out.println(myWallet);
       // 여기까지 왔을때 클라이언트는 뭔가 잘못되었다는것을 알게되고 디버깅을 시도할것이다.
-      // 그리고 추가적인 연산을 다 뒤져본 이후에야 printWallet 의 계산이 잘못되었다는것을 깨닫고 수정을 할것이다.
+      // 그리고 추가적인 연산을 다 뒤져본 이후에야 printWallet 에 잘못된 연산이 있다는것을 깨닫고 수정을 할것이다.
       // 반면 불변 객체는 어디서든 불변이므로 위의 케이스가 발생하지 않을것임을 확신할수 있다.
       // 또한 누군가는 '불변 객체는 기본적으로 readonly 이므로 해당 케이스와는 아예 어울리지 않는거 아님?' 이라고 이야기 할수 있다.
       // 이것도 맞는 말이며, 판단은 스스로..
@@ -56,7 +56,7 @@ class Scratch {
 
     static void printWallet(Wallet w) {
       System.out.println("in printWallet :: " + w);
-      w.payForPaper(1);// 대충 클리아인트가 엉뚱한 연산을 하게 됐다는 가정
+      w.payForPaper(1);// 대충 클라이언트가 엉뚱한 연산을 하게 됐다는 가정
     }
 
     static void printMoneyBag(MoneyBag b) {
