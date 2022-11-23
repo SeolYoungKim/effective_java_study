@@ -84,7 +84,8 @@ item 28에서 이야기한 이유 뿐만 아니라
 런타임에서의 상세한 타입비교가 어렵다는 문제가 있다.(둘은 런타임에선 같은 타입이다)  
 아마 스프링의 resttemplate을 이용한 api 호출을 해본 사람은 이해할수 있을것이다.
 
-![](https://github.com/mycode01/linkimages/blob/master/effective_java/efj_item28_06.png?raw=true)
+![](https://github.com/mycode01/linkimages/blob/master/effective_java/efj_item28_06.png?raw=true)  
+
 이런 폭탄을 숨겨두고 타입 이레이져라고 이름까지 붙이고 자랑스러워하는 모습이 좀...
 
 
