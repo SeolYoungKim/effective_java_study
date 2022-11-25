@@ -69,3 +69,5 @@ return (T[]) Arrays.copyOf(elementData, size, a.getClass());
 T[] result = (T[]) Arrays.copyOf(elementData, size, a.getClass());
 return result;
 ```
+
+비검사 경고는 사라졌지만 런타임에 ClassCastException을 일으킬 수 있으니 주석을 달아두자.
