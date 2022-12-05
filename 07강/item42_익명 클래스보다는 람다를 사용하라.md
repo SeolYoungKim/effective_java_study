@@ -12,6 +12,7 @@
 
 한번쯤 자바에서 스레드를 사용하려고 Runnable을 이용하려다 당황한적이 있었을것이다.
 ![](https://raw.githubusercontent.com/mycode01/linkimages/master/effective_java/efj_item42_01.png)
+
 익명 클래스로 작성된 두개의 인스턴스 myFunction1, 2 는 같은일을 하는 객체이며, 2의 run은 빨간색 박스로 표시된 정의부와 매칭된다.
 
 람다도 일종의 익명 클래스이며, Runnable 은 구현해야하는 한개의 메소드만 가지고 있기 때문에 위와 같은 예제가 가능하다.
