@@ -22,7 +22,7 @@ regex 패턴 매쳐, 난수 생성기, 다른 스트림
 스트림은 플루언트 패턴을 이용한 API이다 => 메소드 체이닝을 사용한다.
 
 스트림에 사용하는 람다나 메소드 레퍼런스으로는 바깥 스코프의 지역변수를 재할당하는 것이 불가능하고  
-<s>스트림은 반복문 도중에 pass, return 의 사용이 불가능하다.</s> >> 스트림은 가능하지만 람다가 불가능
+<s>스트림은 반복문 도중에 pass, return 의 사용이 불가능하다.</s> >> 스트림은 가능하지만 람다가 불가능  
 람다는 break continue return 을 사용해서 스코프 바깥의 반복문을 제어할수가 없다.
 
 위에서 기술한 특성들때문에 생기는 오해들에 주의하며 코드를 작성하자.
@@ -59,5 +59,10 @@ forEach() 를 최대한 덜 사용하라. 평가가 이루어지기 때문에 �
 스트림과 for-loop가 어울리는 곳이 다르다.  
 57,58,59,60 참고
 
+빠지지 않는 성능 이슈
+
 참고 
+
 https://ryan-han.com/post/dev/java-stream/
+
+https://jypthemiracle.medium.com/java-stream-api%EB%8A%94-%EC%99%9C-for-loop%EB%B3%B4%EB%8B%A4-%EB%8A%90%EB%A6%B4%EA%B9%8C-50dec4b9974b
