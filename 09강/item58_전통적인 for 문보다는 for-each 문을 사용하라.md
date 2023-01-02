@@ -126,14 +126,12 @@ for (Iterator<String> i = females.iterator(); i.hasNext(); ) {
 아래와 같이 바꿀 수 있다.
 
 ```java
-static void fun3() {
-    List<String> females = List.of("유리", "수지");
-    List<String> males = List.of("짱구", "훈이", "철수", "맹구");
+List<String> females = List.of("유리", "수지");
+List<String> males = List.of("짱구", "훈이", "철수", "맹구");
 
-    for (String female : females) {
-        for (String male : males) {
-            System.out.println(female + " ♥ " + male);
-        }
+for (String female : females) {
+    for (String male : males) {
+        System.out.println(female + " ♥ " + male);
     }
 }
 ```
