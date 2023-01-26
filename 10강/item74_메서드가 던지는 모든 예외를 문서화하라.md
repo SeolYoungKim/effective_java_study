@@ -82,11 +82,12 @@ boolean contains(Object o);
 사용자는 @throws만 있는 경우와 throws절과 @throws에 있는 경우를 구분할 수 있고, 그로 인해 어느것이 비검사 예외인지 알기 쉽기 때문이다.
 
 - 검사 예외의 경우
-![image](https://user-images.githubusercontent.com/7973448/214629569-be301637-7388-4210-81b6-40604d6aaf51.png)
+
+  ![image](https://user-images.githubusercontent.com/7973448/214629569-be301637-7388-4210-81b6-40604d6aaf51.png)
 
 - 비검사 예외의 경우
 
-![image](https://user-images.githubusercontent.com/7973448/214629865-83b68a15-30f3-4964-88d0-52d2e078c2f3.png)
+  ![image](https://user-images.githubusercontent.com/7973448/214629865-83b68a15-30f3-4964-88d0-52d2e078c2f3.png)
 
 ## 다만..
 
