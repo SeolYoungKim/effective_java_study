@@ -168,8 +168,8 @@ public class Main {
                 System.out.println(element);
 
                 if (element == 23) {
-									set.removeObserver(this);
-								}
+		  set.removeObserver(this);
+		}
             }
         });
 
@@ -213,7 +213,7 @@ private void notifyElementAdded(E element) {
 
     for (SetObserver<E> observer : snapshot) {
         observer.added(this, element);
-		}
+    }
 }
 ```
 
