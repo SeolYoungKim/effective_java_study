@@ -1,8 +1,6 @@
 ## item85 - 자바 직렬화의 대안을 찾으라
 
-<br>
-
-### 핵심
+## 핵심
 
 ```
 “직렬화는 위험하다.”
@@ -12,19 +10,19 @@
 
 <br>
 
-### 직렬화란 뭔가요?
+## 직렬화란 뭔가요?
 
 넓은 의미로 직렬화는 어떤 데이터를 다른 데이터의 형태로 변환하는 것을 말합니다.
 
 <br>
 
-### 그렇다면 역직렬화란?
+## 그렇다면 역직렬화란?
 
 바이트 스트림에서 객체의 상태로 변환하는 것을 말합니다.
 
-<br>
+<br><br>
 
-### 그럼 바이트 스트림이란 무엇을 말하나요?
+## 그럼 바이트 스트림이란 무엇을 말하나요?
 
 스트림은 데이터의 흐름입니다. 데이터의 통로라고도 말합니다.
 
@@ -40,7 +38,7 @@
 
 <br><br>
 
-### 직렬화가 왜 위험하다고 하는거야?
+## 직렬화가 왜 위험하다고 하는거야?
 
 직렬화가 위험한 이유는 공격 범위가 너무 넓기 때문이라고 말하고 있습니다. 
 
@@ -64,7 +62,7 @@ OutputInputStream의 `readObject` 메서드를 호출하면서 객체 그래�
 
 <br><br>
 
-### 예제코드 - 역직렬화 폭탄
+## 예제코드 - 역직렬화 폭탄
 
 ```java
 static byte[] bomb() {
@@ -94,9 +92,9 @@ static byte[] bomb() {
 
 HashSet을 역직렬화 하기위해 2^100의 hashCode() 메서드(폭탄)이 호출됩니다. 
 
-<br>
+<br><br>
 
-### 그럼 어떻게 해야하나?
+## 그럼 어떻게 해야하나?
 
 가장 좋은 방법은 아무것도 역직렬화하지 않는 것이라고 합니다. 
 
@@ -104,9 +102,9 @@ HashSet을 역직렬화 하기위해 2^100의 hashCode() 메서드(폭탄)이 �
 
 java 9에 나온 ObjectInputFilter를 사용하는 것도 방법입니다. 
 
-<br>
+<br><br>
 
-### 핵심 정리
+## 핵심 정리
 
 - 자바의 직렬화는 위험하니 피해야 한다.
 - 신뢰할 수 없는 데이터라면 역직렬화를 하지 말자.
@@ -120,4 +118,8 @@ java 9에 나온 ObjectInputFilter를 사용하는 것도 방법입니다.
 
 [https://madplay.github.io/post/prefer-alternatives-to-java-serialization](https://madplay.github.io/post/prefer-alternatives-to-java-serialization)
 
+
 [https://klyhyeon.tistory.com/301](https://klyhyeon.tistory.com/301)
+
+
+https://github.com/Meet-Coder-Study/book-effective-java/blob/main/12%EC%9E%A5/85_%EC%9E%90%EB%B0%94_%EC%A7%81%EB%A0%AC%ED%99%94%EC%9D%98_%EB%8C%80%EC%95%88%EC%9D%84_%EC%B0%BE%EC%9C%BC%EB%9D%BC_%EC%9D%B4%ED%98%B8%EB%B9%88.md
