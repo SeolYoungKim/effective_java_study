@@ -84,7 +84,9 @@ static byte[] bomb() {
 }
 ```
 
-<br><br>
+<br>
+
+### 이미지 참고 - https://klyhyeon.tistory.com/301 
 
 ![이미지](/12강/item85.PNG)
 
